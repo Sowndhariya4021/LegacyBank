@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard - Legacy Bank</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background: linear-gradient(to right, #000000, #ffd700);-->
+<!--            color: #ffffff;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            height: 100vh;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .navbar-custom {-->
+<!--            background-color: rgba(0, 0, 0, 0.7);-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            width: 100%;-->
+<!--            z-index: 1000;-->
+<!--        }-->
+
+<!--        .navbar-custom a {-->
+<!--            color: #ffffff !important;-->
+<!--        }-->
+
+<!--        .navbar-custom .navbar-brand {-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .dashboard-container {-->
+<!--            max-width: 1000px;-->
+<!--            margin-top: 50px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        h2, h3 {-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .btn-primary {-->
+<!--            background-color: #000000;-->
+<!--            border: none;-->
+<!--            transition: background-color 0.3s ease;-->
+<!--        }-->
+
+<!--        .btn-primary:hover {-->
+<!--            background-color: #ffd700;-->
+<!--            color: #000;-->
+<!--        }-->
+
+<!--        .btn-success {-->
+<!--            background-color: #28a745;-->
+<!--            border: none;-->
+<!--        }-->
+
+<!--        .btn-success:hover {-->
+<!--            background-color: #218838;-->
+<!--        }-->
+
+<!--        .form-container {-->
+<!--            background-color: rgba(255, 255, 255, 0.1);-->
+<!--            padding: 15px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        .account-details {-->
+<!--            background-color: rgba(255, 255, 255, 0.1);-->
+<!--            padding: 20px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .error {-->
+<!--            color: #ff4c4c;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            background-color: rgba(0, 0, 0, 0.7);-->
+<!--            color: white;-->
+<!--            padding: 15px 0;-->
+<!--            font-size: 14px;-->
+<!--            position: fixed;-->
+<!--            bottom: 0;-->
+<!--            width: 100%;-->
+<!--            text-align: center;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
+<!--        }-->
+
+<!--        .footer a {-->
+<!--            color: #ffd700;-->
+<!--            text-decoration: none;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .footer a:hover {-->
+<!--            color: #ffecb3;-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+
+<!--        @keyframes shake {-->
+<!--            0% { transform: translateX(0); }-->
+<!--            25% { transform: translateX(-5px); }-->
+<!--            50% { transform: translateX(5px); }-->
+<!--            75% { transform: translateX(-5px); }-->
+<!--            100% { transform: translateX(0); }-->
+<!--        }-->
+<!--    </style>-->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("https://i.pinimg.com/736x/72/c0/55/72c05566763a3d799eae1928879e6f78.jpg");
+            background-size: cover;
+            background-position: center;
+
+            color: #000000; /* Change text color to black for better contrast */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .navbar-custom {
+            background-color: rgba(0, 51, 102, 0.9); /* Dark blue with some transparency */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-custom a {
+            color: #ffffff !important; /* White text for navbar links */
+        }
+
+        .navbar-custom .navbar-brand {
+            font-weight: bold;
+        }
+
+        .dashboard-container {
+            top:300px;
+            margin-top:1100px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ffffff; /* Dark blue color for headings */
+        }
+
+         h3 {
+            margin-bottom: 20px;
+            color: #003366; /* Dark blue color for headings */
+        }
+
+        .btn-primary {
+            background-color: #003366; /* Dark blue button */
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: #ffffff; /* White text on hover */
+        }
+
+        .btn-success {
+            background-color: #28a745; /* Green button */
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .account-details {
+            background-color: rgba(255, 255, 255, 0.9); /* White background for account details */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: #ff4c4c; /* Red color for error messages */
+        }
+
+        .footer {
+            background-color: rgba(0, 51, 102, 0.9); /* Dark blue footer */
+            color: white;
+            padding: 15px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer a {
+            color: #f8d308; /* Gold color for footer links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ffecb3; /* Lighter gold on hover */
+            text-decoration: underline;
+        }
+
+        .section {
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for sections */
+            padding: 20px;
+            border: solid #003366;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .para {
+            font-size: 16px; /* Adjust font size */
+            line-height: 1.5; /* Increase line height for better readability */
+            color: #333; /* Set text color */
+            margin-bottom: 15px; /* Add space below each paragraph */
+            font-family: Arial, sans-serif; /* Set font family */
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">Legacy Bank</a>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/transactions">Transactions</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+
+<div class="container dashboard-container">
+    <div class="text-left">
+        <h2 th:text="'Welcome, ' + ${account.username}"></h2>
+        <h2 th:text="'Current Balance: $' + ${account.balance}"></h2>
+    </div>
+
+    <!-- Account Details Section -->
+
+    <div class="account-details">
+        <div class="text-left">
+        <h4>Account Details:</h4>
+            <br>
+            <img src="https://i.pinimg.com/736x/79/27/e0/7927e06463f1cc7e3aa76c6609f2d3af.jpg" alt="card"/>
+            <br><br>
+            <p class="text-start para">The following information outlines your account details, including your current balance, recent transactions, and other important account-related data.</p>
+            <p class="text-start para">Please take a moment to review this information carefully to ensure everything is accurate and up to date, as it is essential for managing your banking activities effectively.</p>
+        <p><strong>Account Number:</strong> <span th:text="${account.id}"></span></p> <!-- Use account.id for account number -->
+        <p><strong>Account Type:</strong> Savings</p>
+        </div>
+        </div>
+
+
+<!--    <div class="row">-->
+<!--        <div class="col-md-3 mb-4">-->
+<!--                <div class="justify-content-center">-->
+<!--        &lt;!&ndash; Deposit Section &ndash;&gt;-->
+
+<!--            <button class="btn btn-block btn-primary" type="button" data-toggle="collapse" data-target="#depositForm" aria-expanded="false" aria-controls="depositForm">-->
+<!--                Deposit-->
+<!--            </button>-->
+<!--            <div class="collapse mt-3" id="depositForm">-->
+<!--                <form method="post" action="/deposit" class="form-container">-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Amount:</label>-->
+<!--                        <input type="number" class="form-control" name="amount" required />-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-block btn-success">Submit</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; Withdraw Section &ndash;&gt;-->
+<!--        <div class="col-md-3 mb-4">-->
+<!--            <button class="btn btn-block btn-primary" type="button" data-toggle="collapse" data-target="#withdrawForm" aria-expanded="false" aria-controls="withdrawForm">-->
+<!--                Withdraw-->
+<!--            </button>-->
+<!--            <div class="collapse mt-3" id="withdrawForm">-->
+<!--                <form method="post" action="/withdraw" class="form-container">-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Amount:</label>-->
+<!--                        <input type="number" class="form-control" name="amount" required />-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-block btn-success">Submit</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Transfer Section &ndash;&gt;-->
+<!--        <div class="col-md-3 mb-4">-->
+<!--            <button class="btn btn-block btn-primary" type="button" data-toggle="collapse" data-target="#transferForm" aria-expanded="false" aria-controls="transferForm">-->
+<!--                Transfer Money-->
+<!--            </button>-->
+<!--            <div class="collapse mt-3" id="transferForm">-->
+<!--                <form method="post" action="/transfer" class="form-container">-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Recipient Username:</label>-->
+<!--                        <input type="text" class="form-control" name="toUsername" required />-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Amount:</label>-->
+<!--                        <input type="number" class="form-control" name="amount" required />-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-block btn-success">Submit</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="row mt-5">
+        <div class="col-md-12 mb-4">
+            <div class="section">
+                <h3>Deposit</h3>
+                <p class="text-left para">
+                    Please be aware that all deposits are subject to verification and may take up to 3 business days to process. Ensure that you double-check the deposit amount and account details before submission, as incorrect information may result in delays or failed transactions. Additionally, be mindful of any deposit limits that may apply to your account, as exceeding these limits could lead to rejected deposits.
+                </p>
+
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#depositForm" aria-expanded="false" aria-controls="depositForm">
+                    Deposit
+                </button>
+                <div class="collapse mt-3" id="depositForm">
+                    <div class="form-container text-center" style="max-width: 400px; margin: 0 auto;">
+                        <form method="post" action="/deposit">
+                            <div class="form-group">
+                                <label>Amount:</label>
+                                <input type="number" class="form-control" name="amount" required />
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-4">
+            <div class="section">
+                <h3>Withdraw</h3>
+                <p class="text-left para">
+                    Please note that all withdrawal requests are subject to account verification and may take up to 2 business days to process. Ensure that you double-check the withdrawal amount and account details before submission, as incorrect information may lead to delays or failed transactions. Be aware of any daily withdrawal limits that may apply to your account, as exceeding these limits could result in rejected requests.
+                </p>
+
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#withdrawForm" aria-expanded="false" aria-controls="withdrawForm">
+                    Withdraw
+                </button>
+                <div class="collapse mt-3" id="withdrawForm">
+                    <div class="form-container text-center" style="max-width: 400px; margin: 0 auto;">
+                        <form method="post" action="/withdraw">
+                            <div class="form-group">
+                                <label>Amount:</label>
+                                <input type="number" class="form-control" name="amount" required />
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-4">
+            <div class="section">
+                <h3>Transactions</h3>
+                <p class="text-left para">
+                    Please be aware that transaction processing times may vary depending on the merchant and the type of transaction. Always ensure that you have sufficient funds in your account before initiating a transaction to avoid declined payments or overdraft situations.
+                </p>
+
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#transferForm" aria-expanded="false" aria-controls="transferForm">
+                    Transfer Money
+                </button>
+                <div class="collapse mt-3" id="transferForm">
+                    <div class="form-container text-center" style="max-width: 400px; margin: 0 auto;">
+                        <form method="post" action="/transfer">
+                            <div class="form-group">
+                                <label>Recipient Username:</label>
+                                <input type="text" class="form-control" name="toUsername" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Amount:</label>
+                                <input type="number" class="form-control" name="amount" required />
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p th:if="${error != null}" th:text="${error}" class="error text-center mt-3"></p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
